@@ -51,6 +51,7 @@ const App = () => {
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
       console.log("Connected", accounts[0]);
+      console.log ("Thank you for connect your wallet, Mr. ", accounts[0])
       setCurrentAccount(accounts[0]);
     } catch (error) {
       console.log(error)
@@ -69,25 +70,30 @@ const App = () => {
   //HTML
   return (
     <div className="App">
-      <header className="Header">
-        <p>This is the Header</p>
-        <a className="App-link" href="https://draftdigital.org"> Draft Digital</a>
-      </header>
-      <body className="Body">
-        <p>This is the body</p>
-        <button className="waveButton" onClick={null}>
-          Click the button
+
+    <header className="Header">
+      <p>This is the Header</p>
+      {/* <a className="App-link" href="https://draftdigital.org"> Draft Digital</a> */}
+      {!currentAccount && (
+        <button className="waveButton" onClick={connectWallet}>
+          Connect Wallet
         </button>
-        {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        )}
-      </body>
-      <footer className="Footer">>
+      )}
+    </header>
+
+    <section className="SectionA">
+    <p>This is the body</p>
+      <button className="waveButton" onClick={null}>
+        Click the button
+      </button>
+
+    </section>
+
+      <footer className="Footer">{">"}
         <p>This is the footer</p>
       </footer>
     </div>
+
   );
 }
 
